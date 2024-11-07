@@ -1,91 +1,47 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const chatbot = document.getElementById("chatbot");
-    const chatbotHeader = document.getElementById("chatbot-header");
-    const chatbotBody = document.getElementById("chatbot-body");
-    const toggleChatbot = document.getElementById("toggle-chatbot");
-    const chatMessages = document.getElementById("chat-messages");
-    const userInput = document.getElementById("user-input");
+// Chatbot toggle function
+document.getElementById('toggle-chatbot').addEventListener('click', function() {
+    const chatbotBody = document.getElementById('chatbot-body');
+    chatbotBody.style.display = chatbotBody.style.display === 'none' ? 'block' : 'none';
+    this.textContent = chatbotBody.style.display === 'none' ? '+' : '−';
+});
 
-    let isDragging = false;
-    let offsetX, offsetY;
+// Chatbot responses based on keywords
+const responses = {
+    "malware": "Malware is a type of software designed to harm or exploit any programmable device or network.",
+    "phishing": "Phishing is a cybercrime where attackers pose as legitimate institutions to steal sensitive information.",
+    "encryption": "Encryption is the process of converting information into a code to prevent unauthorized access.",
+    "firewall": "A firewall is a network security device that monitors and filters incoming and outgoing network traffic.",
+    "ransomware": "Ransomware is a type of malware that threatens to publish the victim's data unless a ransom is paid."
+};
 
-    // Define question-response pairs with keywords
-    const responses = [
-        { keywords: ["phishing", "email", "scam"], response: "Phishing is a type of online scam where attackers try to trick you into revealing sensitive information. Be cautious when you receive suspicious emails." },
-        { keywords: ["malware", "virus", "infected"], response: "Malware is malicious software designed to harm your computer. Make sure to install a reputable antivirus and avoid downloading files from untrusted sources." },
-        { keywords: ["firewall", "protection", "network"], response: "A firewall helps to protect your network by filtering traffic and preventing unauthorized access. Always keep your firewall enabled." },
-        { keywords: ["encryption", "data", "security"], response: "Encryption is the process of encoding data to prevent unauthorized access. Always use encryption to protect sensitive data." },
-        { keywords: ["password", "secure", "account"], response: "Use strong, unique passwords for each account. Consider using a password manager to keep track of them securely." },
-        // Add more responses as needed
-    ];
+document.getElementById('user-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        const userInput = event.target.value.toLowerCase();
+        addChatMessage('User', userInput);
 
-    // Display bot response
-    function displayBotMessage(message) {
-        const botMessage = document.createElement("div");
-        botMessage.classList.add("bot-message");
-        botMessage.innerText = message;
-        chatMessages.appendChild(botMessage);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // Display user message
-    function displayUserMessage(message) {
-        const userMessage = document.createElement("div");
-        userMessage.classList.add("user-message");
-        userMessage.innerText = message;
-        chatMessages.appendChild(userMessage);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // Find the best response based on keywords
-    function getResponse(userQuestion) {
-        userQuestion = userQuestion.toLowerCase();
-        for (const pair of responses) {
-            for (const keyword of pair.keywords) {
-                if (userQuestion.includes(keyword)) {
-                    return pair.response;
-                }
+        let response = "I'm sorry, I didn't understand that. Can you ask about cybersecurity terms like malware, phishing, etc.?"
+        for (const keyword in responses) {
+            if (userInput.includes(keyword)) {
+                response = responses[keyword];
+                break;
             }
         }
-        return "I'm sorry, I don't have information on that topic. Please try asking something else.";
+
+        addChatMessage('Bot', response);
+        event.target.value = ''; // Clear input field
     }
+});
 
-    // Handle user input
-    userInput.addEventListener("keydown", function(event) {
-        if (event.key === "Enter" && userInput.value.trim() !== "") {
-            const userQuestion = userInput.value.trim();
-            displayUserMessage(userQuestion);
-            const botReply = getResponse(userQuestion);
-            setTimeout(() => displayBotMessage(botReply), 500); // Delay for a realistic feel
-            userInput.value = "";
-        }
-    });
+function addChatMessage(sender, message) {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add(sender === 'User' ? 'user-message' : 'bot-message');
+    messageElement.textContent = `${sender}: ${message}`;
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to latest message
+}
 
-    // Toggle visibility of the chatbot
-    chatbotHeader.addEventListener("click", function() {
-        chatbotBody.classList.toggle("hidden");
-    });
-
-    // Drag functionality for chatbot window
-    chatbotHeader.addEventListener("mousedown", function(e) {
-        isDragging = true;
-        offsetX = e.clientX - chatbot.getBoundingClientRect().left;
-        offsetY = e.clientY - chatbot.getBoundingClientRect().top;
-    });
-
-    document.addEventListener("mousemove", function(e) {
-        if (isDragging) {
-            chatbot.style.left = `${e.clientX - offsetX}px`;
-            chatbot.style.top = `${e.clientY - offsetY}px`;
-        }
-    });
-
-    document.addEventListener("mouseup", function() {
-        isDragging = false;
-    });
-
-    // Toggle minimize/maximize
-    toggleChatbot.addEventListener("click", function() {
-        chatbotBody.classList.toggle("minimized");
-    });
+// Initializing chatbot state
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('chatbot-body').style.display = 'none'; // Start with chatbot hidden
 });
