@@ -2,24 +2,25 @@
 document.getElementById('toggle-chatbot').addEventListener('click', function() {
     const chatbotBody = document.getElementById('chatbot-body');
     chatbotBody.style.display = chatbotBody.style.display === 'none' ? 'block' : 'none';
-    this.textContent = chatbotBody.style.display === 'none' ? '+' : '−';
 });
 
-// Chatbot responses based on keywords
+// Responses database
 const responses = {
-    "malware": "Malware is a type of software designed to harm or exploit any programmable device or network.",
-    "phishing": "Phishing is a cybercrime where attackers pose as legitimate institutions to steal sensitive information.",
-    "encryption": "Encryption is the process of converting information into a code to prevent unauthorized access.",
+    "malware": "Malware is software designed to harm or exploit any programmable device or network.",
+    "phishing": "Phishing is a cybercrime where attackers impersonate legitimate institutions to steal sensitive data.",
+    "encryption": "Encryption is the process of encoding data to prevent unauthorized access.",
     "firewall": "A firewall is a network security device that monitors and filters incoming and outgoing network traffic.",
     "ransomware": "Ransomware is a type of malware that threatens to publish the victim's data unless a ransom is paid."
 };
 
+// Handle user input and generate bot responses
 document.getElementById('user-input').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
-        const userInput = event.target.value.toLowerCase();
+        const userInput = event.target.value.toLowerCase().trim();
         addChatMessage('User', userInput);
 
-        let response = "I'm sorry, I didn't understand that. Can you ask about cybersecurity terms like malware, phishing, etc.?"
+        // Determine response
+        let response = "I'm sorry, I didn't understand that. Try asking about cybersecurity terms like malware, phishing, etc.";
         for (const keyword in responses) {
             if (userInput.includes(keyword)) {
                 response = responses[keyword];
@@ -36,12 +37,13 @@ function addChatMessage(sender, message) {
     const chatMessages = document.getElementById('chat-messages');
     const messageElement = document.createElement('div');
     messageElement.classList.add(sender === 'User' ? 'user-message' : 'bot-message');
-    messageElement.textContent = `${sender}: ${message}`;
+    messageElement.textContent = message;
+
     chatMessages.appendChild(messageElement);
-    chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to latest message
+    chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the latest message
 }
 
-// Initializing chatbot state
+// Initialize chatbot visibility state
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('chatbot-body').style.display = 'none'; // Start with chatbot hidden
+    document.getElementById('chatbot-body').style.display = 'none'; // Start hidden
 });
