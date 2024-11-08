@@ -9,47 +9,47 @@ const responses = {
     "malware": "Malware is software designed to harm or exploit any programmable device or network.",
     "phishing": "### Phishing: An Overview
 
-Phishing is a type of cyber-attack where attackers attempt to deceive individuals into providing sensitive information, such as usernames, passwords, credit card numbers, and other personal data. Typically, this is done by impersonating a legitimate entity, like a bank, online service, or trusted organization, through fraudulent emails, messages, or websites. Phishing remains one of the most common and effective forms of cybercrime due to its simplicity and the human factor involved in cybersecurity vulnerabilities.
+Phishing is a type of cyber-attack where attackers attempt to deceive individuals into providing sensitive information, such like usernames, passwords, credit card numbers, and other personal data Typically,  is done by impersonating a legitimate entity, like a bank, online service, or trusted organization, through fraudulent emails, messages, or websites Phishing remains one of the most common and effective forms of cybercrime due to its simplicity and the human factor involved  cybersecurity vulnerabilities
 
 ---
 
 ### 1. **Types of Phishing Attacks**
 
-There are several types of phishing attacks, each employing different tactics to trick individuals. The most common forms include:
+There are several types of phishing attacks, each employing different tactics to trick individuals The most common forms include:
 
-   - **Email Phishing**: The most well-known form, where attackers send fake emails that appear to be from legitimate organizations. These emails often contain malicious links or attachments.
+   - **Email Phishing**: The most well-known form, where attackers send fake emails that appear to be from legitimate organizations These emails often contain malicious links or attachments.
 
-   - **Spear Phishing**: Unlike general phishing, spear phishing targets specific individuals or organizations, often based on detailed research. Attackers personalize their messages to make them appear more convincing.
+   - **Spear Phishing**: Unlike general phishing, spear phishing targets specific individuals or organizations, often based on detailed research Attackers personalize their messages to make them appear more convincing.
 
-   - **Whaling**: This type targets high-profile individuals like executives, often using sophisticated tactics and impersonating authority figures, such as the CEO or other high-ranking officials, to extract sensitive information or money.
+   - **Whaling**: This type targets high-profile individuals like executives, often using sophisticated tactics and impersonating authority figures, such  the CEO or other high-ranking officials, to extract sensitive information or money.
 
-   - **Vishing (Voice Phishing)**: Attackers use phone calls instead of emails to gather personal information. The caller might impersonate a bank or government representative, convincing the target to share sensitive information over the phone.
+   - (Vishing) (Voice Phishing) Attackers use phone calls instead of emails to gather personal information The caller might impersonate a bank or government representative, convincing the target to share sensitive information over the phone.
 
-   - **Smishing (SMS Phishing)**: Here, attackers use text messages to trick individuals. These messages often contain links to fake websites or ask the recipient to call a phone number controlled by the attacker.
+   (Smishing) (SMS Phishing)**: Here, attackers use text messages to trick individuals These messages often contain links to fake websites or ask the recipient to call a phone number controlled by the attacker.
 
-   - **Clone Phishing**: Attackers duplicate a legitimate, previously sent email from a trusted source, making minor modifications, such as replacing a link with a malicious one. The recipient is more likely to trust the message since it appears familiar.
+   - **Clone Phishing**: Attackers duplicate a legitimate, previously sent email from a trusted source, making minor modifications, such  replacing a link w a malicious one The recipient is more likely to trust the message since it appears familiar.
 
 ---
 
-### 2. **How Phishing Works**
+### . **How Phishing Works**
 
 Phishing attacks generally follow a common sequence:
 
    - **Initial Contact**: Attackers contact the target via email, text, or call, pretending to be a trusted entity.
    
-   - **Bait**: The message typically includes a hook, such as an urgent problem (e.g., "Your account has been compromised") or an attractive offer (e.g., "You've won a prize"), to prompt the recipient to take immediate action.
+   - **Bait**: The message typically includes a hook,  (urgent problem) ( Your account has been compromised") or an attractive offer (You've won a prize"), to prompt the recipient to take immediate action.
    
-   - **The Link or Attachment**: The message often contains a link to a fake website that resembles a legitimate one or an attachment that contains malware. When users click the link or open the attachment, they either enter sensitive information into the fake website or inadvertently install malware on their device.
+   - **The Link or Attachment**: The message often contains a link to a fake website that resembles a legitimate one or an attachment that contains malware When users click the link or open the attachment, they either enter sensitive information into the fake website or inadvertently install malware on their device.
    
-   - **Data Collection**: Any data entered into the fake website, or captured by the malware, is collected by the attacker and used for malicious purposes, such as identity theft, financial theft, or selling the information on the black market.
+   - **Data Collection** Any data entered into the fake website, or captured by the malware, is collected by the attacker and used for malicious purposes, such as identity theft, financial theft, or selling the information on the black market.
 
----
 
-### 3. **Techniques Used in Phishing**
+
+-Techniques Used -in Phishing
 
 Attackers use several psychological and technical techniques to deceive individuals, including:
 
-   - **Urgency and Fear**: Creating a sense of urgency or fear (e.g., "Immediate action required") prompts users to act without thinking.
+Urgency and Fea Creating a sense of urgency ( fear) ( Immediate action required") prompts users to act without thinking
    
    - **Impersonation**: Attackers mimic trusted brands or individuals, making their messages appear authentic.
    
